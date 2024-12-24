@@ -223,3 +223,13 @@
   text-transform: capitalize;
   margin-bottom: 15px;
 }
+
+.dropdown-body.open{
+  opacity: 1;
+  visibility: visible;
+}
+
+.not-found{
+  color:red;
+  font-size:18px;
+}
