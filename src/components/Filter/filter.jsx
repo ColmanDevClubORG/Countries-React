@@ -1,21 +1,18 @@
-import {useState} from "react"
+import { useState } from "react"
 
-const Filter = ({ search }) => {
-  const [ displayDropdown, setDisplayDropdown ] = useState(false);
-
-  const searchValue = (e) => {
-    search(e.target.value); 
-  };
+const Filter = ({ onSearch }) => {
+  const regions = ["all", "africa", "americas", "asia", "europe", "oceania"];
+  const [displayDropdown, setDisplayDropdown] = useState(false);
 
   const regionValue = (region) => {
-    search(region);
+    onSearch(region);
     setDisplayDropdown(false);
   }
 
-  const dropdowntoggle = () => {
+  const toggleDropdown = () => {
     setDisplayDropdown(!displayDropdown);
   };
-  
+
   return (
     <section className="filters">
       <div className="container">
@@ -25,25 +22,28 @@ const Filter = ({ search }) => {
             type="text"
             className="search-input"
             placeholder="Search for a country..."
-            onChange={searchValue}
+            onChange={(e) => { onSearch(e.target.value) }}
           />
         </div>
         <div className={`dropdown-wrapper ${displayDropdown ? "open" : ""}`}>
           <div
             className="dropdown-header flex flex-jc-sb flex-ai-c"
-            onClick={dropdowntoggle}
+            onClick={toggleDropdown}
           >
             <span>Filter by Region</span>
             <i className="fa-regular fa-chevron-down icon"></i>
           </div>
           <div className="dropdown-body">
             <ul>
-            <li onClick={() => regionValue("all")} data-region="all">All</li>
-              <li onClick={() => regionValue("africa")}data-region="africa">Africa</li>
-              <li onClick={() => regionValue("americas")}data-region="americas">America</li>
-              <li onClick={() => regionValue("asia")} data-region="asia">Asia</li>
-              <li onClick={() => regionValue("europe")}  data-region="europe">Europe</li>
-              <li onClick={() => regionValue("oceania")}data-region="oceania">Oceania</li>
+              {regions.map((region) => (
+                <li
+                  key={region}
+                  onClick={() => regionValue(region)}
+                  data-region={region}
+                >
+                  {region}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

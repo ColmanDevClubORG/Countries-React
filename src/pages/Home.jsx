@@ -4,7 +4,6 @@ import Country from "../components/Country";
 import Filter from "../components/Filter/filter";
 
 const Home = () => {
-
     const [ filteredCountries, setfilteredCountries ] = useState(CardData);
 
     const search = (userInput) => {
@@ -13,11 +12,8 @@ const Home = () => {
           setfilteredCountries(CardData);
           return;
         }
-        const filtered = CardData.filter((country) => {
-          return (
-            country.name.toLowerCase().includes(input) ||
-            country.region.toLowerCase() === input
-          );
+        const filtered = CardData.filter(({ name, region }) => {
+            return name.toLowerCase().includes(input) || region.toLowerCase().includes(input)
         });
       
         setfilteredCountries(filtered);
@@ -25,7 +21,7 @@ const Home = () => {
       
     return (
         <>
-            <Filter search={search} />
+            <Filter onSearch={search} />
             <main className="main">
                 <div className="container">
                     <section className="countries-grid">

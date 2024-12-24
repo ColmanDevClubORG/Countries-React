@@ -1,26 +1,23 @@
 import { useState, useEffect } from "react";
+import { HardCodedStrings } from "./constants";
 
 const Header = () => {
-    const [dispalayDarkMode, setDispalayDarkMode] = useState(false);
+    const [toggleDarkMode, setDispalayDarkMode] = useState(false);
 
     const handleDarkModeClick = () => {
-        setDispalayDarkMode(!dispalayDarkMode)
+        setDispalayDarkMode(!toggleDarkMode)
     }
 
     useEffect(() => {
-        if (dispalayDarkMode) {
-            document.body.classList.add("dark-theme");
-        } else {
-            document.body.classList.remove("dark-theme");
-        }
-    }, [dispalayDarkMode]);
+        document.body.classList.toggle("dark-theme", toggleDarkMode);
+    }, [toggleDarkMode]);
 
     return (
         <header className="header">
             <div className="container flex flex-jc-sb flex-ai-c">
                 <div className="logo">
                     <a href="index.html">
-                        <h1>Where in the world?</h1>
+                        <h1>{HardCodedStrings.logoText}</h1>
                     </a>
                 </div>
                 <button
@@ -29,7 +26,7 @@ const Header = () => {
                     className="theme-toggle flex flex-jc-sb flex-ai-c"
                 >
                     <i className="fa-regular fa-moon theme-icon"></i>
-                    <span className="theme-text" onClick={handleDarkModeClick}>Dark Mode</span>
+                    <span className="theme-text" onClick={handleDarkModeClick}>{HardCodedStrings.darkModeText}</span>
                 </button>
             </div>
         </header>
