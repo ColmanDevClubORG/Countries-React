@@ -1,10 +1,9 @@
 import React from 'react'
 
-const Country = () => {
+export const Country = () => {
   return (
     // TODO: Country component
     <div>Country</div>
   )
 }
 
-export default Country
