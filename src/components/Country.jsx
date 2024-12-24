@@ -1,10 +1,22 @@
-import React from 'react'
+import 'react'
 
-const Country = () => {
-  return (
-    // TODO: Country component
-    <div>Country</div>
-  )
+// eslint-disable-next-line react/prop-types
+const Country = ({country}) => {
+    return (
+        <a href="#" className="country">
+            <div className="country-flag">
+                <img src={country.flag} alt={country.name}/>
+            </div>
+            <div className="country-info">
+                <h2 className="country-title">{country.name}</h2>
+                <ul className="country-brief">
+                    <li><strong>Population:</strong> {country.population}</li>
+                    <li><strong>Region:</strong> {country.region}</li>
+                    <li><strong>Capital:</strong> {country.capital}</li>
+                </ul>
+            </div>
+        </a>
+    )
 }
 
 export default Country
