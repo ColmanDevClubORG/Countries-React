@@ -3,7 +3,7 @@ import 'react'
 // eslint-disable-next-line react/prop-types
 const Country = ({country}) => {
     return (
-        <a href="#" className="country">
+        <>
             <div className="country-flag">
                 <img src={country.flag} alt={country.name}/>
             </div>
@@ -15,7 +15,7 @@ const Country = ({country}) => {
                     <li><strong>Capital:</strong> {country.capital}</li>
                 </ul>
             </div>
-        </a>
+        </>
     )
 }
 
