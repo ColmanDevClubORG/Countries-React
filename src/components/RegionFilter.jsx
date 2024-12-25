@@ -1,9 +1,16 @@
-import  'react';
+import 'react';
+import {useState} from "react";
 
 const RegionFilter = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    }
+
     return (
-        <div className="dropdown-wrapper">
-            <div className="dropdown-header flex flex-jc-sb flex-ai-c">
+        <div className={`dropdown-wrapper ${isOpen ? "open" : ""}`}>
+            <div className="dropdown-header flex flex-jc-sb flex-ai-c" onClick={toggleDropdown}>
                 <span>Filter by Region</span>
                 <i className="fa-solid fa-chevron-down icon"></i>
             </div>
