@@ -5,7 +5,7 @@ import RegionFilter from "./components/RegionFilter.jsx";
 import SearchBox from "./components/SearchBox.jsx";
 import countriesData from './assets/json/CountriesData.json';
 
-const Home = () => {
+const Home = ({ theme, toggleTheme }) => {
     const [countries, setCountries] = useState(countriesData);
 
     const showOneCountryDetails = (countryName) => {
@@ -29,11 +29,11 @@ const Home = () => {
 
     return (
         <>
-            <Header/>
+            <Header theme={theme} toggleTheme={toggleTheme}/>
             <section className="filters">
-                <div className="container">
+                <div className="container" >
                     {countries.length === 1 && (
-                        <button className="button" onClick={showAllCountries}>
+                        <button className="button-all-countries" onClick={showAllCountries}>
                             Show All Countries
                         </button>
                     )}
