@@ -1,6 +1,6 @@
 import 'react';
 
-const SearchBox = () => {
+const SearchBox = ({action}) => {
     return (
         <div className="search-wrapper">
             <i className="fa-solid fa-magnifying-glass search-icon"></i>
@@ -8,6 +8,7 @@ const SearchBox = () => {
                 type="text"
                 className="search-input"
                 placeholder="Search for a country..."
+                onInput={action}
             />
         </div>
     );

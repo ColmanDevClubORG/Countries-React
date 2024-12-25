@@ -8,7 +8,6 @@ import countriesData from './assets/json/CountriesData.json';
 const Home = () => {
     const [countries, setCountries] = useState(countriesData);
 
-
     const showOneCountryDetails = (countryName) => {
         setCountries(countriesData.filter((country) => country.name === countryName));
     };
@@ -17,6 +16,16 @@ const Home = () => {
         setCountries(countriesData);
     };
 
+    const search = (e) => {
+        const query = e.target.value.toLowerCase();
+        if (query === "") {
+            setCountries(countriesData); // מחזיר את הרשימה המלאה אם החיפוש ריק
+        } else {
+            setCountries(countriesData.filter((country) =>
+                country.name.toLowerCase().startsWith(query)
+            ));
+        }
+    };
 
     return (
         <>
@@ -28,7 +37,7 @@ const Home = () => {
                             Show All Countries
                         </button>
                     )}
-                    <SearchBox/>
+                    <SearchBox action={search}/>
                     <RegionFilter/>
                 </div>
             </section>
