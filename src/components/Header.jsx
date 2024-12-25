@@ -3,7 +3,6 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export const Header = () => {
     return (
-        <header className="header">
             <div className="container flex flex-jc-sb flex-ai-c">
                 <div className="logo">
                     <a href="Home.jsx">
@@ -12,6 +11,5 @@ export const Header = () => {
                 </div>
                 <ThemeToggle></ThemeToggle>
             </div>
-        </header>
     )
 }
