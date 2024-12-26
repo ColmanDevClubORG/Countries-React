@@ -1,7 +1,14 @@
 import 'react'
 
-
+/**
+ * Country Component
+ * Displays a country's flag, name, population, region, and capital.
+ *
+ * Props:
+ * - country: { flag, name, population, region, capital }
+ */
 const Country = ({country}) => {
+
     return (
         <>
             <div className="country-flag">

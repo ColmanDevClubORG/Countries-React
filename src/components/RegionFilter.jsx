@@ -1,9 +1,25 @@
 import 'react';
 import {useState} from "react";
 
+/**
+ * RegionFilter Component
+ * Displays a dropdown menu for filtering by region.
+ *
+ * Props:
+ * - action: Function to handle the selection of a region.
+ *
+ * Functionality:
+ * - Toggles the dropdown menu open and closed.
+ * - Calls the provided `action` function when a region is clicked.
+ */
 const RegionFilter = ({action}) => {
+    //this State tracks whether the dropdown menu is open (true) or closed (false).
     const [isOpen, setIsOpen] = useState(false);
 
+    /**
+     * toggleDropdown Function
+     * Toggles the state of `isOpen` to open or close the dropdown menu.
+     */
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     }

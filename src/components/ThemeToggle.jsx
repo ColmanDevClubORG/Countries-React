@@ -1,6 +1,14 @@
 import 'react';
-
+/**
+ * ThemeToggle Component
+ * Button to switch between light and dark themes.
+ *
+ * Props:
+ * - theme: Current theme ("light" or "dark").
+ * - toggleTheme: Function to toggle the theme.
+ */
 const ThemeToggle = ({theme, toggleTheme}) => {
+
     return (
         <button
             type="button"

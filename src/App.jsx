@@ -5,7 +5,14 @@ import "../src/assets/scss/common.scss";
 import Home from "./Home.jsx";
 import {useState} from "react";
 
-
+/**
+ * App Component
+ * Manages the application, including theme state and persistence.
+ *
+ * State:
+ * - theme: Tracks the current theme ("light" or "dark"), initialized from localStorage.
+ *
+ */
 function App() {
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -18,6 +25,10 @@ function App() {
         return "light";
     });
 
+    /**
+     * toggleTheme
+     * Switches between light and dark themes, updates <body> class and localStorage.
+     */
     const toggleTheme = () => {
         const isDark = theme === "dark";
         const newTheme = isDark ? "light" : "dark";
