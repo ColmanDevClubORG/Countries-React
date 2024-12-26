@@ -212,6 +212,12 @@ button {
   transition: 0.2s linear;
 }
 
+.header .theme-toggle.active {
+  border: 2px solid white; /* Border for the active button */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  padding: 5px 15px; /* Adjust padding to fit */
+}
+
 .header .theme-toggle .theme-icon {
   font-size: 20px;
 }
