@@ -1,6 +1,6 @@
 import 'react'
 
-// eslint-disable-next-line react/prop-types
+
 const Country = ({country}) => {
     return (
         <>

@@ -5,7 +5,7 @@ import RegionFilter from "./components/RegionFilter.jsx";
 import SearchBox from "./components/SearchBox.jsx";
 import countriesData from './assets/json/CountriesData.json';
 
-const Home = ({ theme, toggleTheme }) => {
+const Home = ({theme, toggleTheme}) => {
     const [countries, setCountries] = useState(countriesData);
 
     const showOneCountryDetails = (countryName) => {
@@ -16,10 +16,10 @@ const Home = ({ theme, toggleTheme }) => {
         setCountries(countriesData);
     };
 
-    const search = (e) => {
+    const searchByInput = (e) => {
         const query = e.target.value.toLowerCase();
         if (query === "") {
-            setCountries(countriesData); // מחזיר את הרשימה המלאה אם החיפוש ריק
+            setCountries(countriesData);
         } else {
             setCountries(countriesData.filter((country) =>
                 country.name.toLowerCase().startsWith(query)
@@ -27,18 +27,27 @@ const Home = ({ theme, toggleTheme }) => {
         }
     };
 
+    const searchByRegion = (e) => {
+        const region = e.target.getAttribute("data-region");
+        if (region === 'All') {
+            showAllCountries();
+        } else {
+            setCountries(countriesData.filter((country) => country.region === region));
+        }
+    }
+
     return (
         <>
             <Header theme={theme} toggleTheme={toggleTheme}/>
             <section className="filters">
-                <div className="container" >
+                <div className="container">
                     {countries.length === 1 && (
                         <button className="button-all-countries" onClick={showAllCountries}>
                             Show All Countries
                         </button>
                     )}
-                    <SearchBox action={search}/>
-                    <RegionFilter/>
+                    <SearchBox action={searchByInput}/>
+                    <RegionFilter action={searchByRegion}/>
                 </div>
             </section>
             <div className="countries-grid">
