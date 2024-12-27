@@ -9,8 +9,6 @@
     height: 100%;
 }
 
-
-/* הגדרות ל-html ול-body */
 html, body {
     margin: 0;
     padding: 0;
@@ -21,19 +19,25 @@ html, body {
     font-size: 100%;
 }
 
-
 :root {
-
+    --color-primary: #646cff;
+    --color-primary-hover: #535bf2;
+    --color-light-hover: #747bff;
+    --color-dark-bg: #1a1a1a;
+    --color-light-bg: #f9f9f9;
+    --color-text-light: #213547;
+    --color-white: #ffffff;
+    --focus-outline-color: -webkit-focus-ring-color;
 }
 
 a {
     font-weight: 500;
-    color: #646cff;
+    color: var(--color-primary);
     text-decoration: inherit;
 }
 
 a:hover {
-    color: #535bf2;
+    color: var(--color-primary-hover);
 }
 
 body {
@@ -42,8 +46,6 @@ body {
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-
-
 }
 
 h1 {
@@ -58,35 +60,32 @@ button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: var(--color-dark-bg);
     cursor: pointer;
     transition: border-color 0.25s;
 }
 
-
 button:hover {
-    border-color: #646cff;
+    border-color: var(--color-primary);
 }
 
 button:focus,
 button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto var(--focus-outline-color);
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        color: #213547;
-        background-color: #ffffff;
+        color: var(--color-text-light);
+        background-color: var(--color-white);
         width: 100%;
     }
 
     a:hover {
-        color: #747bff;
+        color: var(--color-light-hover);
     }
 
     button {
-        background-color: #f9f9f9;
+        background-color: var(--color-light-bg);
     }
 }
-
-

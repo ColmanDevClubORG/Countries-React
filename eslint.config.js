@@ -36,7 +36,7 @@ export default [
       "no-undef": "off",
       "no-unused-vars": [
         "warn",
-        { "varsIgnorePattern": "^_" } // מתעלם ממשתנים שמתחילים ב-_.
+        { "varsIgnorePattern": "^_" }
       ],
     },
   },

@@ -7,23 +7,22 @@ import 'react'
  * Props:
  * - country: { flag, name, population, region, capital }
  */
-const Country = ({country}) => {
-
+const Country = ({ country: { flag, name, population, region, capital } }) => {
     return (
         <>
             <div className="country-flag">
-                <img src={country.flag} alt={country.name}/>
+                <img src={flag} alt={name} />
             </div>
             <div className="country-info">
-                <h2 className="country-title">{country.name}</h2>
+                <h2 className="country-title">{name}</h2>
                 <ul className="country-brief">
-                    <li><strong>Population:</strong> {country.population}</li>
-                    <li><strong>Region:</strong> {country.region}</li>
-                    <li><strong>Capital:</strong> {country.capital}</li>
+                    <li><strong>Population:</strong> {population}</li>
+                    <li><strong>Region:</strong> {region}</li>
+                    <li><strong>Capital:</strong> {capital}</li>
                 </ul>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Country
+export default Country;

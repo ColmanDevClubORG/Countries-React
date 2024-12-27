@@ -20,23 +20,17 @@ import countriesData from './assets/json/CountriesData.json';
 const Home = ({theme, toggleTheme}) => {
     const [countries, setCountries] = useState(countriesData);
 
-    /**
-     * Filters the countries list to display details of a single country by name.
-     */
+
     const showOneCountryDetails = (countryName) => {
         setCountries(countriesData.filter((country) => country.name === countryName));
     };
 
-    /**
-     * Resets the countries list to show all available countries.
-     */
+
     const showAllCountries = () => {
         setCountries(countriesData);
     };
 
-    /**
-     * Filters the countries list based on a search query from the input field.
-     */
+
     const searchByInput = (e) => {
         const query = e.target.value.toLowerCase();
         if (query === "") {
@@ -48,9 +42,6 @@ const Home = ({theme, toggleTheme}) => {
         }
     };
 
-    /**
-     * Filters the countries list based on the selected region.
-     */
     const searchByRegion = (e) => {
         const region = e.target.getAttribute("data-region");
         if (region === 'All') {
@@ -59,13 +50,14 @@ const Home = ({theme, toggleTheme}) => {
             setCountries(countriesData.filter((country) => country.region === region));
         }
     }
-
+    const oneCountry = 1;
     return (
         <>
             <Header theme={theme} toggleTheme={toggleTheme}/>
             <section className="filters">
                 <div className="container">
-                    {countries.length === 1 && (
+
+                    {countries.length === oneCountry && (
                         <button className="button-all-countries" onClick={showAllCountries}>
                             Show All Countries
                         </button>

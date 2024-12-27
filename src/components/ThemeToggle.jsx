@@ -8,15 +8,15 @@ import 'react';
  * - toggleTheme: Function to toggle the theme.
  */
 const ThemeToggle = ({theme, toggleTheme}) => {
-
+    const isDarkTheme = theme === "dark";
     return (
         <button
             type="button"
             aria-label="Theme Switcher Button"
             className="theme-toggle flex flex-jc-sb flex-ai-c"
             onClick={toggleTheme}>
-            <i className={`fa-regular ${theme === "dark" ? "fa-sun" : "fa-moon"} theme-icon`}></i>
-            <span className="theme-text">{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+            <i className={`fa-regular ${isDarkTheme ? "fa-sun" : "fa-moon"} theme-icon`}></i>
+            <span className="theme-text">{isDarkTheme ? "Light Mode" : "Dark Mode"}</span>
         </button>
     );
 };

@@ -1,10 +1,17 @@
+:root {
+  --color-primary: #111517;
+  --color-warning: #d21034;
+  --color-secondary: #2b3945;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.11);
+}
+
 body {
   font-size: 16px;
-
 }
 
 .btn:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.11);
+  box-shadow: 0 4px 20px var(--shadow-medium);
 }
 
 .btn.btn-back {
@@ -47,7 +54,7 @@ body {
   width: 450px;
   max-width: 450px;
   max-height: 350px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 15px var(--shadow-light);
   overflow: hidden;
   margin-right: 70px;
   border-radius: 6px;
@@ -71,22 +78,22 @@ body {
 }
 
 .country-info h1 {
-  color: #111517;
+  color: var(--color-primary);
   margin-bottom: 30px;
 }
 
 .country-info strong {
   text-transform: capitalize;
-  color: #111517;
+  color: var(--color-primary);
 }
 
 .country-info strong.warning {
-  color: #d21034 !important;
+  color: var(--color-warning) !important;
 }
 
 .country-info li {
   text-transform: capitalize;
-  color: #2b3945;
+  color: var(--color-secondary);
 }
 
 .country-info li button {

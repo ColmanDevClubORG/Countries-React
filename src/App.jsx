@@ -2,6 +2,7 @@ import "../src/assets/css/common.css";
 import "../src/assets/css/details.css";
 import "../src/assets/css/main.css";
 import "../src/assets/scss/common.scss";
+
 import Home from "./Home.jsx";
 import {useState} from "react";
 
@@ -25,10 +26,7 @@ function App() {
         return "light";
     });
 
-    /**
-     * toggleTheme
-     * Switches between light and dark themes, updates <body> class and localStorage.
-     */
+
     const toggleTheme = () => {
         const isDark = theme === "dark";
         const newTheme = isDark ? "light" : "dark";
