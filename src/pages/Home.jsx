@@ -1,12 +1,20 @@
-import React from "react";
+import { useState } from "react";
+import { Country } from "../components/Country";
+import data from "../assets/CountriesData.json";
 
-const Home = () => {
+export const Home = () => {
+    const [countries, setcountries] = useState(data);
     return (
-        // TODO: Home page
-        // Render Country component (components/Country.jsx) for each country
-        // Take data from (assets/CountriesData.json)
-        <div>Home</div>
+        <div className="main container">
+            <div className="countries-grid" >
+                {
+                    countries.map(
+                    (country) => {return <Country key={country.name} {...country}
+                     />
+                     })
+               }
+            </div>
+        </div>
     );
 };
-
-export default Home;
+export default Home
