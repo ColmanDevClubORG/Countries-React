@@ -6,7 +6,6 @@ import Filters from "../components/Filters";
 import ScrollTop from "../components/ScrollTop";
 
 const Home = () => {
-  // Initialize the state with data from the JSON file
   const [countries, setCountries] = useState(CountriesData);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [searchText, setSearchText] = useState("");

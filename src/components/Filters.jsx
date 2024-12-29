@@ -9,6 +9,15 @@ function Filters({
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const regions = [
+    { label: "All", value: "all" },
+    { label: "Africa", value: "africa" },
+    { label: "America", value: "americas" },
+    { label: "Asia", value: "asia" },
+    { label: "Europe", value: "europe" },
+    { label: "Oceania", value: "oceania" },
+  ];
+
   return (
     <section className="filters">
       <div className="container">
@@ -39,26 +48,15 @@ function Filters({
           {dropdownOpen && (
             <div className="dropdown-body">
               <ul>
-                <ul>
-                  <li data-region="all" onClick={onRegionChanged}>
-                    All
+                {regions.map((region) => (
+                  <li
+                    key={region.value}
+                    data-region={region.value}
+                    onClick={onRegionChanged}
+                  >
+                    {region.label}
                   </li>
-                  <li data-region="africa" onClick={onRegionChanged}>
-                    Africa
-                  </li>
-                  <li data-region="americas" onClick={onRegionChanged}>
-                    America
-                  </li>
-                  <li data-region="asia" onClick={onRegionChanged}>
-                    Asia
-                  </li>
-                  <li data-region="europe" onClick={onRegionChanged}>
-                    Europe
-                  </li>
-                  <li data-region="oceania" onClick={onRegionChanged}>
-                    Oceania
-                  </li>
-                </ul>
+                ))}
               </ul>
             </div>
           )}
