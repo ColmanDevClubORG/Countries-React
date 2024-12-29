@@ -1,10 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const Country = () => {
-  return (
-    // TODO: Country component
-    <div>Country</div>
-  )
-}
 
-export default Country
+export const Country = ({ country }) => {
+    return (
+        <div className="country-card">
+            <img src={country.flag} alt={country.name} />
+            <h2 className="country-name">{country.name}</h2>
+            <p>Population: {country.population}</p>
+            <p>Region: {country.region}</p>
+            <p>Capital: {country.capital}</p>
+        </div>
+    );
+};

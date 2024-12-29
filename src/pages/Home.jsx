@@ -1,11 +1,14 @@
 import React from "react";
+import { Country } from '../components/Country';
+import CountriesData from '../assets/CountriesData.json'; // Adjust the path as needed
 
 const Home = () => {
     return (
-        // TODO: Home page
-        // Render Country component (components/Country.jsx) for each country
-        // Take data from (assets/CountriesData.json)
-        <div>Home</div>
+        <div className="home-container">
+            {CountriesData.map((country, index) => (
+                <Country key={index} country={country} />
+            ))}
+        </div>
     );
 };
 
