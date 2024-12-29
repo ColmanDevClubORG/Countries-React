@@ -1,6 +1,6 @@
 import React from "react";
 import { Country } from '../components/Country';
-import CountriesData from '../assets/CountriesData.json'; // Adjust the path as needed
+import CountriesData from '../assets/CountriesData.json';
 
 const Home = () => {
     return (
