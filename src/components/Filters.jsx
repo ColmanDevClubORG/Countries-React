@@ -34,6 +34,7 @@ const Filters = ({ handleRegionChange }) => {
         >
           <div className="dropdown-header flex flex-jc-sb flex-ai-c">
             <span>Filter by Region</span>
+            <i class="fa-regular fa-chevron-down icon"></i>
           </div>
           <div className={`dropdown-body ${isDropdownOpen ? 'open' : ''}`}>
             <ul>
