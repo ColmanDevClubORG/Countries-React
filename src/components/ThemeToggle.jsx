@@ -21,5 +21,6 @@ export const ThemeToggle = () => {
             <span className="theme-text">{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
             
         </button>
+        
     )
 }
