@@ -1,19 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useMemo } from 'react';
 import axios from 'axios';
 
 let countriesData = [];
 
 function useFetchCountries(selectedRegion, searchValue) {
   const [countries, setCountries] = useState([]);
+
   const fetchData = async () => {
-    const { data } = await axios('https://restcountries.com/v3.1/all');
-    setCountries(data);
-    countriesData = data;
+    try {
+      const { data } = await axios('https://restcountries.com/v3.1/all');
+      setCountries(data);
+      countriesData = data;
+    } catch (error) {
+      console.log("error")
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
 
   useEffect(() => {
     let newCountries = {};

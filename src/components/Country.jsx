@@ -24,7 +24,7 @@ const Country = ({
           </li>
           <li>
             <span className='bold'>Region: </span>
-            {index}
+            {region}
           </li>
           <li>
             <span className='bold'>Capital: </span>
