@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {nanoid} from 'nanoid'
 
 const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
@@ -35,11 +36,12 @@ const Filter = ({
             <div>
               <div className={`dropdown-body ${openDropDown ? 'open' : ''}`}>
                 <ul>
-                  {regions.map((region) => {
+                  {regions.map((region,index) => {
                     return (
                       <li
+                        key={nanoid()}
                         className='li-drop'
-                        onClick={() => setSelectedRegion({ region })}
+                        onClick={() => setSelectedRegion(region)}
                       >
                         {region}
                       </li>

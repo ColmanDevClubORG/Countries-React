@@ -1,32 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import countriesData from '../assets/CountriesData.json';
-import Country from '../components/Country';
+import React, { useState } from 'react';
 import Filter from '../components/Filter';
-const Home = (props) => {
+import useFetchCountries from '../components/Hooks/useFetchCountries';
+import Modal from '../components/Modal';
+import Countries from '../components/Countries';
+
+const Home = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All');
-  const [countries, setCountries] = useState(countriesData);
-  const [currentCountriesAfterRegion, setCurrentCountriesAfterRegion] =
-    useState(countriesData);
-  
-  useEffect(() => {
-    let data = {};
-    if (selectedRegion != 'All') {
-      data = countriesData.filter(
-        (country) =>
-          country.region.toLowerCase() == selectedRegion.toLowerCase(),
-      );
-    } else data = countriesData;
-    setCurrentCountriesAfterRegion(data);
-    setCountries(data);
-  }, [selectedRegion]);
+  const { countries } = useFetchCountries(selectedRegion, searchValue);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalCountry, setModalCountry] = useState(countries[0]);
 
-  useEffect(() => {
-    const data = currentCountriesAfterRegion.filter((country) =>
-      country.name.toLowerCase().includes(searchValue.toLowerCase()),
-    );
-    setCountries(data);
-  }, [searchValue]);
+  const openModal = (country) => {
+    setModalCountry(country);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <Filter
@@ -35,19 +25,11 @@ const Home = (props) => {
         selectedRegion={selectedRegion}
         setSelectedRegion={setSelectedRegion}
       />
-      <main className='main'>
-        <div className='container'>
-          <section className='countries-grid'>
-            {countries?.length > 0 ? (
-              countries.map((country) => (
-                <Country key={country.name} country={country} />
-              ))
-            ) : (
-              <div className='not-found'>No countries found</div>
-            )}
-          </section>
-        </div>
-      </main>
+      <Countries countries={countries} openModal={openModal} />
+
+      {isModalOpen && (
+        <Modal closeModal={closeModal} modalCountry={modalCountry} />
+      )}
     </>
   );
 };

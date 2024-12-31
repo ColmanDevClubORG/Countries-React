@@ -8,7 +8,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    document.body.classList.toggle('dark-theme');
+    if (darkMode) document.querySelector('body').classList.add('dark-theme');
+    else document.querySelector('body').classList.remove('dark-theme');
   }, [darkMode]);
 
   return (
