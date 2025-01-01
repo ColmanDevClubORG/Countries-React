@@ -1,13 +1,13 @@
 import React from 'react'
 
-export const Country = ({ countryData }) => {
+export const Country = ({ countryData ,onClick }) => {
   return (
-  <div className='country'>
+  <div className='country' onClick={onClick}>
     
     <img src={countryData.flag} className='country-flag'></img>
 
     <div className='country-info'>
-      <h2 className='country-title'>{countryData.name}</h2>
+      <h2 className='country-title'>{countryData.countryName}</h2>
       <ul className='country-brief'>
 
         <li>

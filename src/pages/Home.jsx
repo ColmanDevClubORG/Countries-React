@@ -4,12 +4,14 @@ import { Filters } from "../components/Filters";
 import { Country } from "../components/Country";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Modal } from "../components/Modal";
 
 
 
 const Home = () => {
 
     const [countries,setCountries]=useState([]);
+    const [selectedCountry,setSelectedCountry]=useState(null);
 
     useEffect(()=>{
         const fetchCountries=async()=>{
@@ -20,7 +22,7 @@ const Home = () => {
                 console.log("data fetched");
 
                 const filteredData=data.map((country)=>({
-                    name: country.name.common,
+                    countryName: country.name.common,
                     population: country.population,
                     region: country.region,
                     capital: country.capital ? country.capital[0] :"N/A",
@@ -37,6 +39,14 @@ const Home = () => {
         fetchCountries();
 
     },[]);
+
+    const openModal=(country)=>{
+        console.log('Opening modal for:', country);
+        setSelectedCountry(country);
+    }
+    const closeModal=()=>{
+        setSelectedCountry(null);
+    }
 
 
     return (
@@ -57,13 +67,19 @@ const Home = () => {
                         {countries.map((countryData) => (
                             <Country
                             countryData={countryData}
-                            key={countryData.name}    
+                            key={countryData.countryName}    
                             onClick={()=>openModal(countryData)}
                             />
                         ))}
                     </div>
                 </div>
             </div>
+            {selectedCountry&& (
+                <>
+                {console.log("Modal is rendering for:", selectedCountry)}
+                <Modal countryData={selectedCountry} onClose={closeModal}/>
+                </>
+            )}
 
         </div>
     );
