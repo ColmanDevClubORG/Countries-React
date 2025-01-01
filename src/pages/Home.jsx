@@ -23,12 +23,10 @@ const Home = () => {
         }
     };
 
-    const matchValue = (country,input) =>{
-        return country.name.toLowerCase().includes(input) ||
-            country.population.toString().includes(input) ||
-            country.region.toLowerCase().includes(input) ||
-            country.capital.toLowerCase().includes(input)
-    }
+    const matchValue = ({name,population,region,capital}, input) => 
+        [name,population.toString(),region, capital]
+          .some(value => value.toLowerCase().includes(input));
+      
 
     const searchInput = (event)=>{
         console.log("enter");
@@ -44,7 +42,7 @@ const Home = () => {
         setIsDarkMode(!isDarkMode);
 
         if (!isDarkMode) {
-            document.body.classList.add("dark-theme");
+            document.body.classList.toggle("dark-theme", !isDarkMode);
         } else {
             document.body.classList.remove("dark-theme");
         }

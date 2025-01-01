@@ -16,7 +16,7 @@ const Filters = (props) => {
                     <i className="fa-regular fa-magnifying-glass search-icon"></i>
                     <input type="text" class="search-input" placeholder="Search for a country..." onInput={()=>props.filterBySearchFunc(event)}/>
                 </div>
-                <div className={`dropdown-wrapper ${isOpen ? "open" : ""}`}>
+                <div className={`dropdown-wrapper ${isOpen && "open"}`}>
                     <div className="dropdown-header flex flex-jc-sb flex-ai-c" onClick={openDropDown}>
                         <span>Filter by Region</span>
                         <i className="fa-regular fa-chevron-down icon"></i>
