@@ -1,11 +1,23 @@
-import React from "react";
+import Country from "../components/Country";
+import Filter from "../components/Filter/filter";
+import useCountries from "../components/Hooks/useCountries";
 
 const Home = () => {
+    const { filteredCountries, search } = useCountries()
+
     return (
-        // TODO: Home page
-        // Render Country component (components/Country.jsx) for each country
-        // Take data from (assets/CountriesData.json)
-        <div>Home</div>
+        <>
+            <Filter onSearch={search} />
+            <main className="main">
+                <div className="container">
+                    <section className="countries-grid">
+                        {filteredCountries.map((card, index) => {
+                            return <Country key={index} card={card} />
+                        })}
+                    </section>
+                </div>
+            </main>
+        </>
     );
 };
 
