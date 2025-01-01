@@ -19,6 +19,7 @@ body {
   background-color: #fafafa;
   color: #111517;
   transition: 0.2s linear;
+  width: 100%;
 }
 
 a {
