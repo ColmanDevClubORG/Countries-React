@@ -16,7 +16,7 @@ const Header = () => {
         <header className="header">
             <div className="container flex flex-jc-sb flex-ai-c">
                 <div className="logo">
-                    <a href="index.html">
+                    <a href="/">
                         <h1>{HardCodedStrings.logoText}</h1>
                     </a>
                 </div>

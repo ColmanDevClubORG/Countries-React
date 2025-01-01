@@ -1,24 +1,10 @@
-import { useState } from "react";
-import CardData from '../assets/CountriesData.json'
 import Country from "../components/Country";
 import Filter from "../components/Filter/filter";
+import useCountries from "../components/Hooks/useCountries";
 
 const Home = () => {
-    const [ filteredCountries, setfilteredCountries ] = useState(CardData);
+    const { filteredCountries, search } = useCountries()
 
-    const search = (userInput) => {
-        const input = userInput.toLowerCase();
-        if (input === "all") {
-          setfilteredCountries(CardData);
-          return;
-        }
-        const filtered = CardData.filter(({ name, region }) => {
-            return name.toLowerCase().includes(input) || region.toLowerCase().includes(input)
-        });
-      
-        setfilteredCountries(filtered);
-      };
-      
     return (
         <>
             <Filter onSearch={search} />
