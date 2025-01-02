@@ -1,0 +1,45 @@
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 1.1rem;
+    border-radius: 0.4rem;
+    width: 54rem;
+    height: 33rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+.img-selected-country{
+    width: 100%;
+    height: auto; 
+    max-width: 100rem;
+    max-height: 25rem;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto; 
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    background: none;
+    /* border: none; */
+    border-color:white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
