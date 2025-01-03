@@ -12,6 +12,7 @@ import {useState} from "react";
  * - Toggles the dropdown menu open and closed.
  * - Calls the provided `action` function when a region is clicked.
  */
+
 const RegionFilter = ({action}) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -30,7 +31,7 @@ const RegionFilter = ({action}) => {
                 <i className="fa-solid fa-chevron-down icon"></i>
             </div>
             <div className="dropdown-body">
-                <ul onClick={action}>
+                <ul onClick={(e) => action(e.target.getAttribute("data-region"))}>
                     {regions.map((region) => (
                         <li key={region} data-region={region}>{region}</li>
                     ))}

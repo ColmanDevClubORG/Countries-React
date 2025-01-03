@@ -18,7 +18,7 @@ const SearchBox = ({action}) => {
                 type="text"
                 className="search-input"
                 placeholder="Search for a country..."
-                onInput={action}
+                onChange={(e) => action(e.target.value)}
             />
         </div>
     );
