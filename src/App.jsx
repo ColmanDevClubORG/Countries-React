@@ -3,6 +3,8 @@ import "../src/assets/css/details.css";
 import "../src/assets/css/main.css";
 import "../src/assets/scss/common.scss";
 import Home from "./pages/Home";
+import "../src/components/Country";
+import "../src/pages/Home";
 
 function App() {
     return (
