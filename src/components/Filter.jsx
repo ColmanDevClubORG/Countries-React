@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import {nanoid} from 'nanoid'
-
-const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+import { nanoid } from 'nanoid';
+import { regions } from '../assets/data';
 
 const Filter = ({
   setSearchValue,
@@ -10,6 +9,10 @@ const Filter = ({
   selectedRegion,
 }) => {
   const [openDropDown, setOpenDropDown] = useState(false);
+
+  const toggleDropDown = ()=>{
+    setOpenDropDown(!openDropDown)
+  }
   return (
     <>
       <section className='filters'>
@@ -25,18 +28,15 @@ const Filter = ({
             />
           </div>
 
-          <div
-            className='dropdown-wrapper'
-            onClick={() => setOpenDropDown(!openDropDown)}
-          >
+          <div className='dropdown-wrapper' onClick={toggleDropDown}>
             <div className='dropdown-header flex flex-jc-sb flex-ai-c'>
               <span>{selectedRegion}</span>
               <i className='fa-regular fa-chevron-down icon'></i>
             </div>
             <div>
-              <div className={`dropdown-body ${openDropDown ? 'open' : ''}`}>
+              <div className={`dropdown-body ${openDropDown&&'open'}`}>
                 <ul>
-                  {regions.map((region,index) => {
+                  {regions.map((region, index) => {
                     return (
                       <li
                         key={nanoid()}

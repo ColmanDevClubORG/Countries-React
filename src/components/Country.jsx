@@ -1,10 +1,9 @@
 import React from 'react';
-
+import { constants } from '../assets/data';
 
 const Country = ({
   country: { name, flags, population, region, capital },
   onClick,
-  index
 }) => {
   return (
     <a
@@ -13,7 +12,7 @@ const Country = ({
       onClick={onClick}
     >
       <div className='country-flag'>
-        <img src={flags?.png} />
+        <img src={flags? flags.png:constants.NO_IMG} />
       </div>
       <div className='country-info'>
         <h2 className='country-title'>{name?.common}</h2>
@@ -28,7 +27,7 @@ const Country = ({
           </li>
           <li>
             <span className='bold'>Capital: </span>
-            {capital? capital[0]:capital }
+            {capital?.[0] ?? capital}
           </li>
         </ul>
       </div>

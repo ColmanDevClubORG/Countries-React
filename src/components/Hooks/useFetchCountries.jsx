@@ -1,6 +1,6 @@
 import { useState, useEffect,useMemo } from 'react';
 import axios from 'axios';
-
+import { constants } from '../../assets/data';
 let countriesData = [];
 
 function useFetchCountries(selectedRegion, searchValue) {
@@ -8,7 +8,7 @@ function useFetchCountries(selectedRegion, searchValue) {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios('https://restcountries.com/v3.1/all');
+      const { data } = await axios(constants.DATA_URL);
       setCountries(data);
       countriesData = data;
     } catch (error) {

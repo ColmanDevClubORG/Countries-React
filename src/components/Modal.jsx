@@ -1,6 +1,5 @@
 const Modal = ({ closeModal, modalCountry }) => {
   const {name,flags,population,region,capital} = modalCountry
-  console.log(modalCountry)
   return (
     <div className='modal-overlay'>
       <div className='modal-content'>

@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
 
-  const displayDarkMode = () => {
+  const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
+  const redirectHome = () =>{
+    window.location.href='index.html'
+  }
   useEffect(() => {
-    if (darkMode) document.querySelector('body').classList.add('dark-theme');
-    else document.querySelector('body').classList.remove('dark-theme');
+    document.querySelector('body').classList.toggle('dark-theme', darkMode);
   }, [darkMode]);
 
   return (
@@ -17,10 +19,7 @@ const Header = () => {
       <header className='header'>
         <div className='container flex flex-jc-sb flex-ai-c'>
           <div className='logo'>
-            <button
-              className='regular-button'
-              onClick={() => (window.location.href = 'index.html')}
-            >
+            <button className='regular-button' onClick={redirectHome}>
               <h1>Where in the world?</h1>
             </button>
           </div>
@@ -29,7 +28,7 @@ const Header = () => {
             type='button'
             aria-label='Theme Switcher Button'
             className='theme-toggle flex flex-jc-sb flex-ai-c'
-            onClick={displayDarkMode}
+            onClick={toggleDarkMode}
           >
             <i className='fa-regular fa-moon theme-icon'></i>
             <span className='theme-text'>Dark Mode</span>
