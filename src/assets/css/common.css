@@ -219,6 +219,8 @@ button {
 .header .theme-toggle .theme-text {
   font-weight: 600;
   text-transform: capitalize;
+  background-color: #beaeae;
+  color: white; 
 }
 
 @media (max-width: 400px) {

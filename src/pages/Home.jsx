@@ -1,19 +1,55 @@
 import {CountryComponent} from "../components/Country";
-import countryData from "../assets/CountriesData";
 import {Header,Scroll,Dropdown} from "../components/Header";
-import { useState } from "react";
+import {useEffect,useState} from "react";
+import {CountryModal} from "../components/Modal";
 
 
 export const Home = () => {
     
-    const [searchQuery, setSearchQuery] = useState(""); 
+    const [countries, setCountries] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [selectedRegion, setSelectedRegion] = useState("all");
+    const [selectedCountry, setSelectedCountry] = useState(null);
 
-    const filterCountries = countryData.filter((country)=>{
-        if (searchQuery === "") {
-            return true;
+    
+    
+useEffect(() => {
+    const fetchCountries = async () => {
+        try {
+            const response = await fetch("https://restcountries.com/v3.1/all");
+            if (!response.ok) {
+                throw new Error("Something went wrong!");
+            }
+            const data = await response.json();
+            setCountries(data);
+        } catch (error) {
+            console.error(error);
         }
-        return country.name.toLowerCase().includes(searchQuery.toLowerCase());
-    });
+    };
+
+    fetchCountries();
+    },[]);
+
+
+    const filterCountries = countries.filter((country) => {
+        const matchesSearchQuery =
+          country.name.common.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesRegion =
+          selectedRegion === "all" || country.region.toLowerCase() === selectedRegion.toLowerCase();
+        return matchesSearchQuery && matchesRegion;
+      });
+
+      const handleRegionSelect = (region) => {
+        setSelectedRegion(region);
+      };
+    
+      const handleCountryClick = (country) => {
+        setSelectedCountry(country); 
+      };
+    
+      const handleCloseModal = () => {
+        setSelectedCountry(null); 
+      };
 
     return (
         <>
@@ -33,7 +69,7 @@ export const Home = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                         </div>
-                        <Dropdown/>
+                        <Dropdown onRegionSelect={handleRegionSelect} />
                     </div>
                 </section>
             
@@ -41,12 +77,15 @@ export const Home = () => {
                     <div className="container">
                         <section className="countries-grid">
                             {filterCountries.map((country,index) => (
-                            <CountryComponent key={index} country={country} />
+                                <div key={index} onClick={() => handleCountryClick(country)}>
+                            <CountryComponent country={country} />
+                            </div>
                         ))}
                         </section>
                     </div>
                 </main>
             </div>
+            <CountryModal country={selectedCountry} onClose={handleCloseModal} />
         </>
     );
 };
