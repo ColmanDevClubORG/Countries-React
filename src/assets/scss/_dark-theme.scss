@@ -85,9 +85,29 @@ body {
       li {
         color: $dark-gray;
       }
+
       strong {
         color: $white;
       }
     }
+
+    #modal-content {
+      background-color: $bg-very-dark-blue;
+      li {
+        color: $dark-gray;
+      }
+
+      strong {
+        color: $white;
+      }
+
+      h2 {
+        color: $white;
+      }
+
+      a {
+        color: $white;
+      }
+    }
   }
-}
+  }
