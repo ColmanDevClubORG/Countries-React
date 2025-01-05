@@ -4,6 +4,7 @@ import "../src/assets/css/main.css";
 import "../src/assets/scss/common.scss";
 import Home from "./pages/Home";
 
+
 function App() {
     return (
         <>
